@@ -20,6 +20,7 @@ class Fila{
         bool Retira();
 
         void RetiraTodos();
+        void Reset();
     private:
         NodePtr Primeiro;
         NodePtr Ultimo;
@@ -33,10 +34,6 @@ Fila::Fila(){
 
 //Método destrutor de objetos.
 Fila::~Fila(){
-    delete this->Primeiro;
-    delete this->Ultimo;
-    this->Primeiro = NULL;
-    this->Ultimo = NULL;
 }
 
 //Método que retorna o primeiro elemento da fila.
@@ -74,10 +71,14 @@ void Fila::Insere(int _x, int _y){
 bool Fila::Retira(){
     if(!this->filaVazia()){
         NodePtr NRemovido = this->Primeiro;
-        this->Primeiro = this->getPrimeiro()->getDir();
-        this->Primeiro->setEsq(NULL);
-        delete NRemovido;
-        NRemovido = NULL;
+        if(this->Primeiro == this->Ultimo){
+            this->Ultimo->setEsq(NULL);
+            this->Ultimo = NULL;
+        } else {
+            this->Primeiro->setEsq(NULL);
+            this->Primeiro = this->getPrimeiro()->getDir();
+        }
+        NRemovido->~Node();
         return true;
     }
     return false;
@@ -89,6 +90,13 @@ void Fila::RetiraTodos(){
     while(retirando){
         retirando = this->Retira();
     }  
+}
+
+//Deixa com 2 elementos
+void Fila::Reset(){
+    while(this->Primeiro->getDir() != this->Ultimo){
+        this->Retira();
+    }
 }
 
 #endif
