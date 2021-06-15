@@ -6,6 +6,10 @@
 using namespace std;
 
 class Fila{
+    private:
+        NodePtr Primeiro;
+        NodePtr Ultimo;
+
     public:
         Fila();
         ~Fila();
@@ -15,15 +19,15 @@ class Fila{
 
         NodePtr getPrimeiro();
         NodePtr getUltimo();
+
+        void setPrimeiro(NodePtr _n);
+        void setUltimo(NodePtr _n);
         
         void Insere(int _x, int _y);
         bool Retira();
 
         void RetiraTodos();
         void Reset();
-    private:
-        NodePtr Primeiro;
-        NodePtr Ultimo;
 };
 
 //Método construtor de objetos.
@@ -43,6 +47,14 @@ NodePtr Fila::getPrimeiro(){
 
 NodePtr Fila::getUltimo(){
     return this->Ultimo;
+}
+
+void Fila::setPrimeiro(NodePtr _n){
+    this->Primeiro = _n;
+}
+
+void Fila::setUltimo(NodePtr _n){
+    this->Ultimo = _n;
 }
 
 //Método que verifica se a fila está vazia.
@@ -73,12 +85,12 @@ bool Fila::Retira(){
         NodePtr NRemovido = this->Primeiro;
         if(this->Primeiro == this->Ultimo){
             this->Ultimo->setEsq(NULL);
+            this->Ultimo->setDir(NULL);
             this->Ultimo = NULL;
         } else {
-            this->Primeiro->setEsq(NULL);
             this->Primeiro = this->getPrimeiro()->getDir();
+            this->Primeiro->setEsq(NULL);
         }
-        NRemovido->~Node();
         return true;
     }
     return false;
