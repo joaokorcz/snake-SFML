@@ -12,7 +12,7 @@ class Fruit{
 
         int getX();
         int getY();
-        
+
         void setX(int _x);
         void setY(int _y);
 };
@@ -23,7 +23,7 @@ Fruit::Fruit(int _x, int _y){
 }
 
 Fruit::~Fruit(){
-    
+
 }
 
 int Fruit::getX(){

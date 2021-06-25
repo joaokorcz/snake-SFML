@@ -4,7 +4,7 @@
 using namespace std;
 
 /*
-  Aluno: JoÃ£o Otavio Martini Korczovei
+  Aluno: João Otavio Martini Korczovei
   RA: 790913
   Disciplina: AED
   Implementacao dos nodes
@@ -21,8 +21,6 @@ class Node{
 
     public:
         Node();
-
-        ~Node();
 
         void setX(int _x);
         void setY(int _y);
@@ -41,14 +39,6 @@ typedef Node* NodePtr;
 
 // Construtor
 Node::Node(){
-}
-
-// Destrutor
-Node::~Node(){
-    delete this->Dir;
-    delete this->Esq;
-    this->Dir = NULL;
-    this->Esq = NULL;
 }
 
 // Setter de info

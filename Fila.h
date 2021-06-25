@@ -22,7 +22,7 @@ class Fila{
 
         void setPrimeiro(NodePtr _n);
         void setUltimo(NodePtr _n);
-        
+
         void Insere(int _x, int _y);
         bool Retira();
 
@@ -30,17 +30,17 @@ class Fila{
         void Reset();
 };
 
-//MÃ©todo construtor de objetos.
+//Método construtor de objetos.
 Fila::Fila(){
     this->Primeiro = NULL;
     this->Ultimo = NULL;
 }
 
-//MÃ©todo destrutor de objetos.
+//Método destrutor de objetos.
 Fila::~Fila(){
 }
 
-//MÃ©todo que retorna o primeiro elemento da fila.
+//Método que retorna o primeiro elemento da fila.
 NodePtr Fila::getPrimeiro(){
     return this->Primeiro;
 }
@@ -57,12 +57,12 @@ void Fila::setUltimo(NodePtr _n){
     this->Ultimo = _n;
 }
 
-//MÃ©todo que verifica se a fila estÃ¡ vazia.
+//Método que verifica se a fila está vazia.
 bool Fila::filaVazia(){
     return (this->Primeiro == NULL);
 }
 
-//MÃ©todo que insere um elemento ao final da fila.
+//Método que insere um elemento ao final da fila.
 void Fila::Insere(int _x, int _y){
     NodePtr Paux = new Node;
     Paux->setX(_x);
@@ -79,7 +79,7 @@ void Fila::Insere(int _x, int _y){
     }
 }
 
-//MÃ©todo para retirar o primeiro elemento da fila.
+//Método para retirar o primeiro elemento da fila.
 bool Fila::Retira(){
     if(!this->filaVazia()){
         NodePtr NRemovido = this->Primeiro;
@@ -91,17 +91,18 @@ bool Fila::Retira(){
             this->Primeiro = this->getPrimeiro()->getDir();
             this->Primeiro->setEsq(NULL);
         }
+        delete NRemovido;
         return true;
     }
     return false;
 }
 
-//MÃ©todo para retirar todos os elementos da fila.
+//Método para retirar todos os elementos da fila.
 void Fila::RetiraTodos(){
     bool retirando = true;
     while(retirando){
         retirando = this->Retira();
-    }  
+    }
 }
 
 //Deixa com 2 elementos
