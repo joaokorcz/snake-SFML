@@ -14,7 +14,8 @@ class Snake : public Fila{
         bool encontrouFruta(Fruit* f);
         void crescer(int n, int m);
         bool estaViva();
-        void gameOver();
+        bool gameOver();
+        int getTamanho();
 
 };
 
@@ -79,7 +80,7 @@ bool Snake::estaViva(){
     return (this->getPrimeiro() != NULL && this->getUltimo() != NULL);
 }
 
-void Snake::gameOver(){
+bool Snake::gameOver(){
     NodePtr Cabeca = this->getPrimeiro();
     NodePtr Corpo = this->getPrimeiro()->getDir();
     bool morreu = false;
@@ -92,8 +93,14 @@ void Snake::gameOver(){
     }
     if(morreu){
         this->Reset();
+        this->tamanho = 2;
     }
+    return morreu;
     
+}
+
+int Snake::getTamanho(){
+    return this->tamanho;
 }
 
 #endif
