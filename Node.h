@@ -3,18 +3,11 @@
 
 using namespace std;
 
-/*
-  Aluno: João Otavio Martini Korczovei
-  RA: 790913
-  Disciplina: AED
-  Implementacao dos nodes
-*/
-
 class Node{
     private:
         // Atributos:
         // x e y: informacao armazenada das posicoes
-        // next: proximo node
+        // dir e esq: nos adjacentes
         int x, y;
         Node* Dir;
         Node* Esq;
